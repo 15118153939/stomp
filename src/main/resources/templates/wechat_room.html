@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="aplus-terminal" content="1">
+    <meta name="apple-mobile-web-app-title" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no, address=no">
+    <title>聊天</title>
+    <link rel="stylesheet" href="base.css" th:type="text/css">
+</head>
+<body>
+<div>
+    <div style="float:left;width:47%">
+        <p>请选择你是谁：
+            <select id="selectName" onchange="stompQueue();">
+                <option value="1">请选择</option>
+                <option value="Mark">Mark</option>
+                <option value="James">James</option>
+                <option value="Lison">Lison</option>
+                <option value="Peter">Peter</option>
+                <option value="King">King</option>
+            </select>
+        </p>
+        <div class="chatWindow">
+            <p style="color:darkgrey">群聊：</p>
+            <section id="chatRecord1" class="chatRecord">
+                <div id="mass_div" class="mobile-page">
+
+                </div>
+            </section>
+            <section class="sendWindow">
+                <textarea name="sendChatValue" id="sendChatValue" class="sendChatValue"></textarea>
+                <input type="button" name="sendMessage" id="sendMassMessage" class="sendMessage"
+                       onclick="sendMassMessage()" value="发送">
+            </section>
+        </div>
+    </div>
+
+
+    <div style="float:right; width:47%">
+        <p>请选择你要发给谁：
+            <select id="selectName2">
+                <option value="1">请选择</option>
+                <option value="Mark">Mark</option>
+                <option value="James">James</option>
+                <option value="Lison">Lison</option>
+                <option value="Peter">Peter</option>
+                <option value="King">King</option>
+            </select>
+        </p>
+        <div class="chatWindow">
+
+            <p style="color:darkgrey">单聊：</p>
+            <section id="chatRecord2" class="chatRecord">
+                <div id="alone_div" class="mobile-page">
+
+                </div>
+            </section>
+            <section class="sendWindow">
+                <textarea name="sendChatValue2" id="sendChatValue2" class="sendChatValue"></textarea>
+                <input type="button" name="sendMessage" id="sendAloneMessage" class="sendMessage"
+                       onclick="sendAloneMessage()" value="发送">
+            </section>
+        </div>
+    </div>
+</div>
+
+<!-- 独立JS -->
+<script th:src="@{sockjs.min.js}"></script>
+<script th:src="@{stomp.min.js}"></script>
+<script th:src="@{jquery.js}"></script>
+<script th:src="@{wechat_room.js}"></script>
+</body>
+</html>
